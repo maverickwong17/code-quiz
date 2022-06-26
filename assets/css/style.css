@@ -1,0 +1,48 @@
+:root {
+    --black: #000000;
+    --grey:  #d3d3d3;
+    --purple: #260433;
+    --accent: #5a1177;
+}
+
+body {
+    background-color: var(--purple);
+    color: var(--grey);
+}
+
+h1 {
+    text-align: center;
+}
+
+header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 30px;
+    font-size: 25px;
+}
+
+header a {
+    color: var(--grey);
+}
+
+
+#block {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+#block div {
+    background-color: var(--accent);
+    width: 50%;
+    height: 600px;
+    padding: 20px;
+}
+
+li {
+    padding: 20px;
+    font-size: 15px;
+}
+
