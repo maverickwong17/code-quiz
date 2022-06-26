@@ -18,14 +18,21 @@ header {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    padding: 30px;
+    padding: 0px 30px 0px 30px;
     font-size: 25px;
 }
 
-header a {
+#viewHighscore {
     color: var(--grey);
+    text-decoration: none;
+    background-color: var(--accent);
+    padding: 10px;
+    
 }
 
+#viewHighscore:hover {
+    background-color: #9e79b4;
+}
 
 #block {
     display: flex;
@@ -33,16 +40,43 @@ header a {
     justify-content: center;
     align-items: center;
 }
-
-#block div {
+article div {
     background-color: var(--accent);
     width: 50%;
     height: 600px;
     padding: 20px;
 }
 
-li {
-    padding: 20px;
-    font-size: 15px;
+ol{
+    display: flex;
+    flex-direction: column;
 }
 
+li {
+    margin: 10px;
+    padding: 20px;
+    font-size: 15px;
+    background-color: var(--purple);    
+    width: 33%;
+}
+
+.answe::marker{
+    background: var(--purple);
+}
+
+li:hover {
+    background-color: #9e79b4;
+}
+
+button {
+    color: var(--grey);
+    background-color: var(--accent);
+    font-size: 25px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    background-color: #9e79b4;
+}
