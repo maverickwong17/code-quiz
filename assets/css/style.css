@@ -58,6 +58,7 @@ li {
     font-size: 15px;
     background-color: var(--purple);    
     width: 33%;
+    border-radius: 5px;
 }
 
 .answe::marker{
