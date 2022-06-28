@@ -50,18 +50,19 @@ var questions = [
 ]
 
 //Timer
-var timeLeft = 61
+var timeLeft = 46
 function setTime() {
     var timerIntterval = setInterval(function(){
         timeLeft--
         timer.textContent = "Timer : " + timeLeft;
-        if(timeLeft === 0){
+        if(timeLeft === 0 || id === 4){
             clearInterval(timerIntterval);
+            quizOver()
         } 
     }, 1000)
 }
 
-//begin quiz
+//begin quiz through begin button
 begin.addEventListener("click", function(){
     begin.setAttribute("style", "visibility : hidden");
     setTime();
@@ -69,7 +70,9 @@ begin.addEventListener("click", function(){
     addQA()
 }
 )
+
 var id = 0
+
 //Display questions and answers
 function addQA() {
     questionhead.textContent = questions[id].question;
@@ -77,7 +80,11 @@ function addQA() {
     a2.textContent = questions[id].option[1].info;
     a3.textContent = questions[id].option[2].info;
     a4.textContent = questions[id].option[3].info;
-}
+    // if (id === 4){
+    //     return quizOver()
+    // }
+}  
+
 ansArr = ["a1","a2",'a3','a4']
 //click answer
 container.addEventListener("click", function(event){
@@ -90,14 +97,18 @@ container.addEventListener("click", function(event){
         console.log(questions[id].option[ansID].correct)
         }
         //wrong answer
-        else {timeLeft = timeLeft - 10;}
+        else {timeLeft = timeLeft - 10;
+        console.log("incorrect")}
         id++
         addQA()
     } 
+})
+
+//gameover
+function quizOver(){
+    container.setAttribute("style", "visibility : hidden");
+    console.log(timeLeft)
     console.log(id)
-    console.log(element.id)
-    console.log(ansArr.indexOf(element.id))
 }
-)
 
 //View Highscores
