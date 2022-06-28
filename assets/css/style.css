@@ -27,7 +27,7 @@ header {
     text-decoration: none;
     background-color: var(--accent);
     padding: 10px;
-    
+    font-size: 25px;
 }
 
 #viewHighscore:hover {
@@ -40,7 +40,8 @@ header {
     justify-content: center;
     align-items: center;
 }
-article div {
+
+#container {
     background-color: var(--accent);
     width: 50%;
     height: 600px;
@@ -52,24 +53,20 @@ ol{
     flex-direction: column;
 }
 
-li {
+.answer {
     margin: 10px;
     padding: 20px;
-    font-size: 15px;
+    font-size: 20px;
     background-color: var(--purple);    
     width: 33%;
     border-radius: 5px; 
 }
 
-.answe::marker{
-    background: var(--purple);
-}
-
-li:hover {
+.answer:hover {
     background-color: #9e79b4;
 }
 
-button {
+#begin, #return {
     color: var(--grey);
     background-color: var(--accent);
     font-size: 25px;
@@ -78,6 +75,35 @@ button {
     align-items: center;
 }
 
-button:hover {
+#begin:hover, #return:hover {
     background-color: #9e79b4;
+}
+
+#return {
+    margin-top: 20px;
+}
+
+#view-score {
+    background-color: var(--accent);
+    width: 30%;
+    height: 600px;
+    padding: 20px;
+}
+
+#highscores {
+    text-align: center;
+}
+
+#scorelist {
+    display: flex;
+    justify-content: space-around;
+}
+
+#initialscore:first-child{
+    list-style: none;
+    
+}
+
+#scorestore {
+    list-style: none;
 }

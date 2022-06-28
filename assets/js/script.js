@@ -55,12 +55,20 @@ function setTime() {
     var timerIntterval = setInterval(function(){
         timeLeft--
         timer.textContent = "Timer : " + timeLeft;
-        if(timeLeft === 0 || id === 4){
+        // Gamer over
+        if(timeLeft === 0 || id === 5){
             clearInterval(timerIntterval);
             quizOver()
         } 
     }, 1000)
 }
+
+//initialize the page
+function init(){
+    container.setAttribute("style", "visibility: hidden");
+}
+
+init()
 
 //begin quiz through begin button
 begin.addEventListener("click", function(){
@@ -72,7 +80,6 @@ begin.addEventListener("click", function(){
 )
 
 var id = 0
-
 //Display questions and answers
 function addQA() {
     questionhead.textContent = questions[id].question;
@@ -80,9 +87,6 @@ function addQA() {
     a2.textContent = questions[id].option[1].info;
     a3.textContent = questions[id].option[2].info;
     a4.textContent = questions[id].option[3].info;
-    // if (id === 4){
-    //     return quizOver()
-    // }
 }  
 
 ansArr = ["a1","a2",'a3','a4']
@@ -104,11 +108,22 @@ container.addEventListener("click", function(event){
     } 
 })
 
+
 //gameover
 function quizOver(){
     container.setAttribute("style", "visibility : hidden");
     console.log(timeLeft)
-    console.log(id)
+    var userInfo = prompt ("Enter your initials to save your score")
+    var scoreInfo = {
+        initials : userInfo,
+        score : timeLeft
+    }
+    localStorage.setItem("scoreInfoStringify" , JSON.stringify (scoreInfo))
 }
 
+
+
 //View Highscores
+function viewscore(){
+
+}
