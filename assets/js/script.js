@@ -12,38 +12,42 @@ var begin = document.getElementById("begin")
 // container.setAttribute("style", "visibility: hidden");
 
 // questions object to refer back to
-var questions = {
-    q1 : { question : "Where is the correct place to insert a JavaScript?",
-        option1: {info: "Both the <head> section and the <body> section are correct", correct: true },
-        option2: {info: "The <head> section", correct : false},
-        option3: {info: "The <body> section", correct : false},
-        option4: {info: "Neither the <head> section or the <body> section are correct", correct : false}
+var questions = [
+    q1 = { question : "Where is the correct place to insert a JavaScript?",
+        option : [{info: "Both the <head> section and the <body> section are correct", correct: true },
+                  {info: "The <head> section", correct : false},
+                  {info: "The <body> section", correct : false},
+                  {info: "Neither the <head> section or the <body> section are correct", correct : false}
+                ]
     },
-    q2 : { question : "How do you write \"Hello World\" in an alert box?",
-        option1: {info: "msgBox(\"Hello World\");", correct : false},
-        option2: {info: "alert(\"Hello World\");", correct: true },
-        option3: {info: "msg(\"Hello World\");", correct : false},
-        option4: {info: "alertBox(\"Hello World\");", correct : false}
+    q2 = { question : "How do you write \"Hello World\" in an alert box?",
+        option : [{info: "msgBox(\"Hello World\");", correct : false},
+                  {info: "alert(\"Hello World\");", correct: true },
+                  {info: "msg(\"Hello World\");", correct : false},
+                  {info: "alertBox(\"Hello World\");", correct : false}
+                ]
     },
-    q3 : { question : "How does a FOR loop start?",
-        option1: {info: "for (i = 0; i <= 5)", correct : false},
-        option2: {info: "for (i <= 5; i++)", correct : false},
-        option3: {info: "for i = 1 to 5", correct : false},
-        option1: {info: "for (i = 0; i <= 5; i++)", correct: true },
+    q3 = { question : "How does a FOR loop start?",
+        option : [{info: "for (i = 0; i <= 5)", correct : false},
+                  {info: "for (i <= 5; i++)", correct : false},
+                  {info: "for i = 1 to 5", correct : false},
+                  {info: "for (i = 0; i <= 5; i++)", correct: true }]
     },
-    q4 : { question : "How do you create a function in JavaScript?",
-        option1: {info: "function:myFunction()", correct : false},
-        option2: {info: "function.myFunction()", correct : false},
-        option3: {info: "function myFunction()", correct: true },
-        option4: {info: "function = myFunction()", correct : false}
+    q4 = { question : "How do you create a function in JavaScript?",
+        option : [{info: "function:myFunction()", correct : false},
+                  {info: "function.myFunction()", correct : false},
+                  {info: "function myFunction()", correct: true },
+                  {info: "function = myFunction()", correct : false}
+                ]
     },
-    q5 : { question : "How to write an IF statement in JavaScript?",
-        option1: {info: "if (i == 5)", correct: true },
-        option2: {info: "if i = 5", correct : false},
-        option3: {info: "if i = 5 then", correct : false},
-        option4: {info: "if i == 5 then", correct : false}
+    q5 = { question : "How to write an IF statement in JavaScript?",
+        option : [{info: "if (i == 5)", correct: true },
+                  {info: "if i = 5", correct : false},
+                  {info: "if i = 5 then", correct : false},
+                  {info: "if i == 5 then", correct : false}
+                ]
     }
-}
+]
 
 //Timer
 var timeLeft = 61
@@ -57,12 +61,43 @@ function setTime() {
     }, 1000)
 }
 
-
-
 //begin quiz
 begin.addEventListener("click", function(){
     begin.setAttribute("style", "visibility : hidden");
     setTime();
     container.setAttribute("style", "visibility: visible");
+    addQA()
 }
 )
+var id = 0
+//Display questions and answers
+function addQA() {
+    questionhead.textContent = questions[id].question;
+    a1.textContent = questions[id].option[0].info;
+    a2.textContent = questions[id].option[1].info;
+    a3.textContent = questions[id].option[2].info;
+    a4.textContent = questions[id].option[3].info;
+}
+ansArr = ["a1","a2",'a3','a4']
+//click answer
+container.addEventListener("click", function(event){
+    var element = event.target
+    //data validate
+    if(element.matches(".answer")){
+        var ansID = ansArr.indexOf(element.id)
+        //correct answer
+        if (questions[id].option[ansID].correct){
+        console.log(questions[id].option[ansID].correct)
+        }
+        //wrong answer
+        else {timeLeft = timeLeft - 10;}
+        id++
+        addQA()
+    } 
+    console.log(id)
+    console.log(element.id)
+    console.log(ansArr.indexOf(element.id))
+}
+)
+
+//View Highscores
