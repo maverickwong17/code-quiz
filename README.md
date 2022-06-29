@@ -24,13 +24,16 @@ Clone repository and run on local machine or use deployed link above
 
 ## Usage 
 
-Provide instructions and examples for use. Include screenshots as needed. 
+The use is to help reinforce javascript concepts and syntax. The viewport dynamically changes between different elements and stages of  the quiz.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+Page on startup
+![alt text](assets/images/startup.png)
 
-```md
-![alt text](assets/images/screenshot.png)
-```
+Quiz section with dynamic size for pick options and timer
+![alt text](assets/images/quiz.png)
+
+Scoreboard to keep track of users locally, with the ability to clear the scoreboard
+![alt text](assets/images/scoreboard.png)
 
 
 ## Credits
@@ -43,8 +46,7 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 MIT License
 
+## Technologies Used
 
-## Features
+HTML, CSS, and Javascript
 
-Scoreboard to keep track of users
-![alt text](assets/images/scoreboard.png)
