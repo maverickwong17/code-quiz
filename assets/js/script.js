@@ -117,27 +117,43 @@ function quizOver(){
     var userInfo = prompt ("Enter your initials to save your score")
     var scoreInfo = {
         initials : userInfo,
-        score : timeLeft
+        score : timeLeft,
+        correct : correct,
     }
-    player[player.length + 1] = scoreInfo
+    player[player.length] = scoreInfo
     localStorage.setItem("playerStringify" , JSON.stringify (player))
-    localStorage.setItem("scoreInfoStringify" , JSON.stringify (scoreInfo))
 
 //quiz over go to highscore screen
     viewScoreEl.setAttribute("style", "display : reset");
     returnEl.setAttribute("style", "display : reset");
     clearEl.setAttribute("style", "display : reset");
+    viewscore();
 }
 
 
 var viewScoreEl = document.querySelector("#view-score")
+var initialScore = document.querySelector("#listInitials")
+var timeScore = document.querySelector("#listTime")
+var scoreScore = document.querySelector("#listScore")
 //View Highscores
 function viewscore(){
-    
     var player = JSON.parse(localStorage.getItem("playerStringify"))
-    console.log(player)
-    // console.log(scoreInfo.initials)
-    // console.log(scoreInfo.score)
+    for (var i = 0; i < player.length; i++){
+        var initialEl = document.createElement("li")
+        var timeEl = document.createElement("li")
+        var scoreEl = document.createElement("li")
+        initialEl.textContent = player[i].initials
+        initialScore.appendChild(initialEl)
+        timeEl.textContent = player[i].score
+        timeScore.appendChild(timeEl)
+        scoreEl.textContent = player[i].correct
+        scoreScore.appendChild(scoreEl)
+        console.log(player[i])
+        console.log(player[i].initials)
+        console.log(player[i].score)
+        console.log(player[i].correct)
+
+    }
 }
 
 
@@ -151,6 +167,7 @@ viewHighscore.addEventListener("click", function(){
     viewScoreEl.setAttribute("style", "display : reset");
     returnEl.setAttribute("style", "display : reset");
     clearEl.setAttribute("style", "display : reset");
+    viewscore();
 }
 )
 
@@ -176,7 +193,6 @@ function init(){
     viewScoreEl.setAttribute("style", "display:none");
     returnEl.setAttribute("style", "display:none");
     clearEl.setAttribute("style", "display : none");
-    viewscore()
 }
 
 init()

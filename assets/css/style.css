@@ -79,7 +79,7 @@ ol{
     background-color: #9e79b4;
 }
 
-#return , {
+#return {
     margin-top: 20px;
 }
 
@@ -99,10 +99,6 @@ ol{
     justify-content: space-around;
 }
 
-#initialstore {
-    list-style: none;
-}
-
-#scorestore {
+#initialstore, #timeleft, #scorestore {
     list-style: none;
 }
