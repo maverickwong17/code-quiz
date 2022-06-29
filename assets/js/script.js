@@ -63,16 +63,13 @@ function setTime() {
     }, 1000)
 }
 
-//initialize the page
-function init(){
-    container.setAttribute("style", "visibility: hidden");
-}
-
-init()
 
 //begin quiz through begin button
 begin.addEventListener("click", function(){
     begin.setAttribute("style", "visibility : hidden");
+    id = 0
+    timeLeft = 46
+    correct = 0
     setTime();
     container.setAttribute("style", "visibility: visible");
     addQA()
@@ -90,6 +87,7 @@ function addQA() {
 }  
 
 ansArr = ["a1","a2",'a3','a4']
+var correct = 0
 //click answer
 container.addEventListener("click", function(event){
     var element = event.target
@@ -99,16 +97,19 @@ container.addEventListener("click", function(event){
         //correct answer
         if (questions[id].option[ansID].correct){
         console.log(questions[id].option[ansID].correct)
+        correct ++
         }
         //wrong answer
         else {timeLeft = timeLeft - 10;
         console.log("incorrect")}
         id++
+        if (id <5)
         addQA()
     } 
 })
 
 
+var player = []
 //gameover
 function quizOver(){
     container.setAttribute("style", "visibility : hidden");
@@ -118,12 +119,64 @@ function quizOver(){
         initials : userInfo,
         score : timeLeft
     }
+    player[player.length + 1] = scoreInfo
+    localStorage.setItem("playerStringify" , JSON.stringify (player))
     localStorage.setItem("scoreInfoStringify" , JSON.stringify (scoreInfo))
+
+//quiz over go to highscore screen
+    viewScoreEl.setAttribute("style", "display : reset");
+    returnEl.setAttribute("style", "display : reset");
+    clearEl.setAttribute("style", "display : reset");
 }
 
 
-
+var viewScoreEl = document.querySelector("#view-score")
 //View Highscores
 function viewscore(){
-
+    
+    var player = JSON.parse(localStorage.getItem("playerStringify"))
+    console.log(player)
+    // console.log(scoreInfo.initials)
+    // console.log(scoreInfo.score)
 }
+
+
+// view/close highscore area
+var viewHighscore = document.querySelector("#viewHighscore")
+var returnEl = document.querySelector("#return")
+var clearEl = document.querySelector("#clear")
+
+viewHighscore.addEventListener("click", function(){
+    begin.setAttribute("style", "visibility : hidden");
+    viewScoreEl.setAttribute("style", "display : reset");
+    returnEl.setAttribute("style", "display : reset");
+    clearEl.setAttribute("style", "display : reset");
+}
+)
+
+returnEl.addEventListener("click", function(){
+    begin.setAttribute("style", "visibility : visible");
+    viewScoreEl.setAttribute("style", "display : none");
+    returnEl.setAttribute("style", "display : none");
+    clearEl.setAttribute("style", "display : none");
+}
+)
+
+// clear highscores
+clearEl.addEventListener('click', function(){
+    player = []
+    localStorage.setItem("playerStringify" , JSON.stringify (player))
+    console.log(player)
+})
+
+
+//initialize the page
+function init(){
+    container.setAttribute("style", "visibility: hidden");
+    viewScoreEl.setAttribute("style", "display:none");
+    returnEl.setAttribute("style", "display:none");
+    clearEl.setAttribute("style", "display : none");
+    viewscore()
+}
+
+init()

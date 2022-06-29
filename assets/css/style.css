@@ -66,7 +66,7 @@ ol{
     background-color: #9e79b4;
 }
 
-#begin, #return {
+#begin, #return , #clear {
     color: var(--grey);
     background-color: var(--accent);
     font-size: 25px;
@@ -75,11 +75,11 @@ ol{
     align-items: center;
 }
 
-#begin:hover, #return:hover {
+#begin:hover, #return:hover , #clear:hover {
     background-color: #9e79b4;
 }
 
-#return {
+#return , {
     margin-top: 20px;
 }
 
@@ -99,9 +99,8 @@ ol{
     justify-content: space-around;
 }
 
-#initialscore:first-child{
+#initialstore {
     list-style: none;
-    
 }
 
 #scorestore {
